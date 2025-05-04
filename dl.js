@@ -3,7 +3,6 @@ const form = document.body.querySelector("form")
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
     const id = document.forms["dl"]["chartid"].value
-    document.forms["dl"]["chartid"].value = ""
     
     fetch("https://api.phira.cn/chart/" + id)
         .then(res => res.json())
@@ -15,6 +14,7 @@ form.addEventListener("submit", async (e) => {
             document.body.appendChild(a)
             a.click()
             a.remove()
+    document.forms["dl"]["chartid"].value = ""
         })
         .catch(err => alert(err))
 })
